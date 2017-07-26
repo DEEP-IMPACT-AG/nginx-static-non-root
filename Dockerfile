@@ -121,6 +121,7 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY nginx.vh.default.conf /etc/nginx/conf.d/default.conf
+COPY run.sh /app/run.sh
 
 RUN chown -R nginx /etc/nginx && chgrp -R nginx /etc/nginx
 
@@ -130,4 +131,4 @@ STOPSIGNAL SIGTERM
 
 USER nginx
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["/app/run.sh"]
